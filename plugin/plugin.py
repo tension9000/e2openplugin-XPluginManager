@@ -36,6 +36,11 @@ class XPluginBrowser(PluginBrowser):
 		self.list = self.list + [PluginEntryComponent(plugin, self.listWidth) for plugin in pluginlist]
 		self["list"].l.setList(self.list)
 
+	def run(self):
+		if len(self.list):
+			plugin = self["list"].l.getCurrentSelection()[0]
+			plugin(session=self.session)
+
 pname = "X-Plugin"
 pdesc = "List and browse XXX plugins"
 
